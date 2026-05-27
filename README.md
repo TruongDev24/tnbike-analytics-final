@@ -14,7 +14,7 @@ Dự án phân tích dữ liệu B2B cho nhà phân phối xe đạp **Thống N
 | Tổng doanh thu (5 tháng) | 68.6 tỷ VND |
 | Mô hình dự báo tốt nhất | Holt-Winters ETS — sMAPE 63.8%, MAE 2.47 tỷ |
 | Dự báo Q2/2026 (T4–T6) | 25.6 → 29.6 → 33.5 tỷ ≈ **88.7 tỷ** tổng |
-| ROC-AUC churn (LR) | 0.28 (dữ liệu B2B chu kỳ không đều) |
+| ROC-AUC churn (LR) | 0.717 |
 | BG-NBD CLV 90 ngày | TB 0.59 đơn/đại lý |
 | Email đơn hàng tháng 3/2026 | 1,132 email → 40.8 tỷ VND |
 
@@ -130,4 +130,4 @@ apt-get install unrar-free  # Ubuntu/Debian
 
 **Tại sao sMAPE thay vì MAPE**: Doanh thu B2B có tháng gần bằng 0 (trước khi kênh đại lý kích hoạt), khiến MAPE phân kỳ. sMAPE scale-invariant và ổn định hơn.
 
-**Churn ROC-AUC thấp (0.28)**: Đặc thù B2B — đại lý mua theo chu kỳ dài không đều, không giống B2C. Recency vẫn là feature quan trọng nhất nhưng tín hiệu yếu trên 5 tháng dữ liệu.
+**Churn ROC-AUC 0.717**: Logistic Regression dự báo churn với time-series split (không dùng random split). Recency là feature quan trọng nhất. Xác suất churn được lấy từ `predict_proba()[:, 0]` vì mô hình được huấn luyện với nhãn 1 = rời bỏ và class_weight='balanced'.
