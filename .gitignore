@@ -1,0 +1,6 @@
+data/raw/sql/
+data/raw/rar/
+data/raw/emails_mar2026/
+data/*.db
+__pycache__/
+.ipynb_checkpoints/
